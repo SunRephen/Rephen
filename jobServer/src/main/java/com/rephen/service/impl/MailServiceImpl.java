@@ -47,7 +47,8 @@ public class MailServiceImpl implements MailService{
         
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append("job异常-----类:").append(className).append("  方法:").append(method)
-                .append("\r\n原因:").append(GetExceptionDetailUtil.getExceptionAllinformation(e)).append("\r\n已自动停止该job");
+                .append("\r\n原因:").append(GetExceptionDetailUtil.getExceptionAllInformation(e)).append("\r\n已自动停止该job");
+        
         mail.setText(stringBuffer.toString());
         
         log.error("发送异常告警邮件:"+mailAddress);

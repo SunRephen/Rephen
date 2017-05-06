@@ -124,7 +124,12 @@ public class QuartzJobBean implements StatefulJob {
                 // job失败 写入DB
                 scheduler.addJobFilureResult(id);
             }
-            mailService.sendMail(userId, e.getCause(), targetClass, targetMethod);
+            // 处理异常链为空的问题 优先发送异常链
+            if(null != e.getCause()){
+                mailService.sendMail(userId, e.getCause(), targetClass, targetMethod);
+            }else{
+                mailService.sendMail(userId, e, targetClass, targetMethod);
+            }
             try {
                 scheduler.stop(id);
             } catch (Exception e1) {
