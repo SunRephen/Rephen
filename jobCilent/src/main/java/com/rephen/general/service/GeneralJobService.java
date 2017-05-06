@@ -1,7 +1,5 @@
 package com.rephen.general.service;
 
-import java.rmi.RemoteException;
-
 /**
  * 远程调用作业通用接口类
  * @author Rephen
