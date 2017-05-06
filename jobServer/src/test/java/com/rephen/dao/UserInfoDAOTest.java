@@ -25,7 +25,7 @@ public class UserInfoDAOTest {
     
     @Test
     public void selectTest(){
-        System.out.println(userInfoDAO.selectUserInfoById(1L).getMailAddress());
+        System.out.println(userInfoDAO.selectUserInfoById(3L).getMailAddress());
         
     }
     
