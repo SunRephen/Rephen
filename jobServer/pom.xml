@@ -5,7 +5,7 @@
 	<artifactId>job-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>rephen-job-webapp</name>
+	<name>rephen-job-server-webapp</name>
 	<url>http://maven.apache.org</url>
 
 	<dependencies>
