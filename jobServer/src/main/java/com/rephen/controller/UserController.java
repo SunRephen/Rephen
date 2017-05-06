@@ -9,7 +9,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
 import org.apache.commons.logging.Log;
@@ -36,13 +35,8 @@ public class UserController {
         ModelAndView mv = new ModelAndView("user_info_list");
         List<UserInfo> userInfos = userInfoDAO.selectAllUserInfo();
         for (int i = 0;i < userInfos.size();i++) {
-
             if (userInfos.get(i).getId().equals(UserInfo.SA_ID))
                 userInfos.remove(i);
-//            if (CollectionUtils.isEmpty(userInfos)) {
-//                break;
-//            }
-
         }
         mv.addObject("list", userInfos);
         return mv;
