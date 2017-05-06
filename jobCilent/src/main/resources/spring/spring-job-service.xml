@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd"
+	default-autowire="byName">
+
+	<bean id="generalJobService" class="com.rephen.general.service.impl.GeneralJobServiceImpl" />  
+	
+    <bean id="generalJobServiceExporter" class="org.springframework.remoting.rmi.RmiServiceExporter">  
+        <!-- 调用Service -->  
+        <property name="service" ref="generalJobService"></property>  
+        <!-- value值是给用户调用 -->  
+        <property name="serviceName" value="generalJobService"></property>  
+        <!-- service 接口 -->  
+        <property name="serviceInterface" value="com.rephen.general.service.GeneralJobService"></property>  
+        <!-- 注册端口号 -->  
+        <property name="registryPort" value="1099"></property>  
+    </bean>  
+
+</beans>

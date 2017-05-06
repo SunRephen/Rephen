@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.rephen.dao.UserInfoDAO">
+	<typeAlias alias="UserInfo" type="com.rephen.domain.UserInfo" />
+	
+	<resultMap class="UserInfo" id="userInfoMap">
+		<result property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+		<result property="mailAddress" column="mail_address" />
+		<result property="createTime" column="create_time" />
+		<result property="updateTime" column="update_time" />
+	</resultMap>
+	
+	<sql id="SQL_FILED">
+		id,username,password,mail_address,create_time,update_time
+	</sql>
+	
+	<select id="selectUserInfoById" parameterClass="java.lang.Long" resultMap="userInfoMap">
+		SELECT <include refid="SQL_FILED"/>
+		FROM user_info WHERE id = #id#
+	</select>
+	
+	<update id="updateUserInfo" parameterClass="UserInfo">
+		UPDATE user_info
+		SET update_time=now()
+		<isNotNull prepend="," property="password">
+			password=#password#
+		</isNotNull>
+		<isNotNull prepend="," property="mailAddress">
+			mail_address=#mailAddress#
+		</isNotNull>
+		WHERE id=#id#
+	</update>
+	
+	<select id="selectUserInfoByUsername" parameterClass="java.lang.String" resultMap="userInfoMap">
+		SELECT <include refid="SQL_FILED"/>
+		FROM user_info WHERE username = #username#
+	</select>
+	
+</sqlMap>

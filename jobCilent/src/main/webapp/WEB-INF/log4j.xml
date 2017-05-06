@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="PROJECT" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="F:/job-clien-tlogs/job-client.log" />
+        <param name="append" value="true" />
+        <param name="encoding" value="UTF-8" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{HH:mm} [%t] %p [%c{10}:%L] - %m%n" />
+        </layout>
+    </appender>
+    
+    <appender name="OTHER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="F:/job-clien-tlogs/other.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%c{10}] - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="DATABASE" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="F:/job-clien-tlogs/database.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%c{10}] - %m%n" />
+		</layout>
+	</appender>
+	
+	
+    
+	<logger name="org.springframework.orm.ibatis" additivity="false">
+		<level value="${job.loggingLevel}" />
+		<appender-ref ref="DATABASE" />
+	</logger>
+	
+	<logger name="java.sql" additivity="false">
+		<level value="${job.loggingLevel}" />
+		<appender-ref ref="DATABASE" />
+	</logger>
+
+
+	<logger name="com.rephen" additivity="false">
+		<level value="${job.loggingLevel}" />
+		<appender-ref ref="PROJECT" />
+	</logger>
+
+	<root>
+		<level value="ERROR" />
+		<appender-ref ref="OTHER" />
+	</root>
+</log4j:configuration>
