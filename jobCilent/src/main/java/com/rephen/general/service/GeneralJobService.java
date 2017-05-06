@@ -16,7 +16,6 @@ public interface GeneralJobService{
      * @param args
      * @return
      * @throws Exception 
-     * @throws RemoteException
      */
     public void excute(String className,String methodName,String args) throws Exception;
 }
