@@ -49,7 +49,6 @@ option = {
 	    },
 	    series : [
 	        {
-	            name: '访问来源',
 	            type: 'pie',
 	            radius : '50%',
 	            center: ['50%', '60%'],
