@@ -146,19 +146,19 @@ td {
 	</form>
     <div style="text-align:left;margin:50px;">
     	<p>
-    		<strong>job_class</strong>为任务类在spring中的bean对象名称<br/>
-    		<strong>job_method</strong>为任务方法的名称<br/>
-    		<strong>job_name</strong>为任务的名称<br/>
-    		<strong>job_group</strong>对于同一个名称的任务在一个任务组中只能有一个任务实例，因此如果实现同一个任务，依据参数不同执行多个任务实例，请设置为不同的任务组
+    		<strong>job_class</strong>为作业类名<br/>
+    		<strong>job_method</strong>为作业方法的名称<br/>
+    		<strong>job_name</strong>为作业的名称<br/>
+    		<strong>job_group</strong>对于同一个名称的作业在一个任务组中只能有一个作业实例，因此如果实现同一个作业，依据参数不同执行多个作业实例，请设置为不同的作业组
     	</p>
         <p>
             需要修改的一般仅限于<strong>job_arguments</strong>和<strong>cron_expression</strong>
         </p>
 		<p>
-			<strong>job_arguments</strong>代表的是任务的参数，如果有多个参数请用#&分开
+			<strong>job_arguments</strong>代表的是作业的参数，如果有多个参数请用#&分开
 		</p>
 		<p>
-			<strong>cron_expression</strong>是用来指定何时执行任务。 <br>
+			<strong>cron_expression</strong>是用来指定何时执行作业。 <br>
 			一个cron表达式有至少6个（也可能是7个）由空格分隔的时间元素。从左至右，这些元素的定义如下： <br> 
 			1．秒（0–59） <br> 
 			2．分钟（0–59） <br> 

@@ -106,15 +106,15 @@ button {
     <table width="98%" class="mytable" cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th>任务标识</th>
-                <th>任务类</th>
-                <th>任务方法</th>
-                <th>任务参数</th>
-                <th>任务组</th>
-                <th>任务名称</th>
-                <th>任务状态</th>
-                <th>任务调度参数</th>
-                <th>任务描述</th>
+                <th>作业标识</th>
+                <th>作业类</th>
+                <th>作业方法</th>
+                <th>作业参数</th>
+                <th>作业组</th>
+                <th>作业名称</th>
+                <th>作业状态</th>
+                <th>作业调度参数</th>
+                <th>作业描述</th>
                 <th>负责人</th>
                 <th>动作</th>
             </tr>
