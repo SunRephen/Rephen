@@ -49,6 +49,7 @@ option = {
 	    },
 	    series : [
 	        {
+	            name: '作业执行情况',
 	            type: 'pie',
 	            radius : '50%',
 	            center: ['50%', '60%'],
