@@ -10,28 +10,34 @@
 <body style="height: 90%; margin: 0">
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="/job/list">作业调度监控系统</a>
-    </div>
-    <div>
-        <ul class="nav navbar-nav">
-            <li><a href="${pageContext.request.contextPath}/job/list">作业列表</a></li>
-            <li><a href="${pageContext.request.contextPath}/user/list">人员列表</a></li>
-            <li><a href="${pageContext.request.contextPath}/user/addOrEdit">添加/修改人员</a></li>
-            <li  class="active"><a href="#">作业结果展示</a></li>
-            <li><a href="${pageContext.request.contextPath}/welcome/logout">注销</a></li>
-        </ul>
-    </div>
+	    <div class="navbar-header">
+	        <a class="navbar-brand" href="/job/list">作业调度监控系统</a>
+	    </div>
+	    <ul class="nav navbar-nav navbar-right">
+	    	<li><a href="/welcome/logout">注销</a></li>
+	    </ul>
     </div>
 </nav>
+
+<div class="col-md-2 sidebar-offcanvas">
+<div class="list-group">
+	<ul class="nav nav-pills nav-stacked">
+	    <a href="${pageContext.request.contextPath}/job/list" class="list-group-item">作业列表</a>
+	    <a class="list-group-item" href="${pageContext.request.contextPath}/user/list">人员列表</a>
+        <a class="list-group-item" href="${pageContext.request.contextPath}/user/addOrEdit">添加/修改人员</a>
+        <a class="list-group-item" id="detail" href="${pageContext.request.contextPath}/job/showDetail?id=${jobId }">作业结果展示</a>
+        <a class="list-group-item" id="allDetail" href="${pageContext.request.contextPath}/job/showHistoryDetail?id=${jobId }">作业成功历史结果</a>
+	</ul>
+	</div>
+</div>
+
+<div class="col-md-10 sidebar-offcanvas">
 	<input id="value" type="hidden" value="${value }"/>
 	<input id="xAxis" type="hidden" value="${xAxis }"/>
 	<input id="jobId" type="hidden" value="${jobId }"/>
 	<input id="showAll" type="hidden" value="${showAll }"/>
-	<div id="container" style="height: 90%"></div>
-	<c:if test="${showAll == '0'}">
-		<a href='http://localhost/job/showHistoryDetail?id=${jobId }'>查看该作业全部历史记录</a>
-	</c:if>
+	<div id="container" style="height: 500%"></div>
+</div>
 	<script type="text/javascript" src="/js/jquery-1.5.2.min.js"></script>
 	<script type="text/javascript" src="/js/echarts.min.js"></script>
 
@@ -43,8 +49,12 @@ var showAll = $("#showAll").val();
 var title;
 if(showAll == '1'){
 	title = "任务历史运行耗时";
+	$('#allDetail').attr('href','#');
+	$('#allDetail').addClass("active");
 }else{
 	title = "最近一天任务运行耗时";
+	$('#detail').attr('href','#'); 
+	$('#detail').addClass("active");
 }
 var myChart = echarts.init(dom);
 var app = {};

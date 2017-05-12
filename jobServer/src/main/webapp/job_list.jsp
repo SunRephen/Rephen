@@ -6,38 +6,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <style>
-table,th,td {
-	margin: 0px;
-	padding: 0px;
-	line-height: 18px;
-	color: #000;
-	font-size: 12px;
-}
-
-.mytable th {
-	background: #BCE774;
-	text-align: center;
-	font-weight: normal;
-	width: 150px;
-	padding: 6px;
-}
-
-.mytable td {
-	background: #ECFBD4;
-	padding: 3px;
-}
-
-.mytable th,.mytable td {
-	border-top: 1px solid #e9e9e9;
-	border-left: 1px solid #e9e9e9;
-	text-align: left;
-}
-
-.mytable {
-	border-bottom: 1px solid #e9e9e9;
-	border-right: 1px solid #e9e9e9;
-}
-
 button {
 	margin: 10px;
 }
@@ -82,41 +50,48 @@ button {
     </title>
 </head>
 <body style="text-align:center;">
+
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="/job/list">作业调度监控系统</a>
-    </div>
-    <div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="#">作业列表</a></li>
-            <li><a href="${pageContext.request.contextPath}/user/list">人员列表</a></li>
-            <li><a href="${pageContext.request.contextPath}/user/addOrEdit">添加/修改人员</a></li>
-            <li><a href="${pageContext.request.contextPath}/welcome/logout">注销</a></li>
-        </ul>
-    </div>
+	    <div class="navbar-header">
+	        <a class="navbar-brand" href="/job/list">作业调度监控系统</a>
+	    </div>
+	    <ul class="nav navbar-nav navbar-right">
+	    	<li><a href="/welcome/logout">注销</a></li>
+	    </ul>
     </div>
 </nav>
 
+<div class="col-md-2 sidebar-offcanvas">
+<div class="list-group">
+	<ul class="nav nav-pills nav-stacked">
+	    <a href="#" class="list-group-item active">作业列表</a>
+	    <a class="list-group-item" href="${pageContext.request.contextPath}/user/list">人员列表</a>
+        <a class="list-group-item" href="${pageContext.request.contextPath}/user/addOrEdit">添加/修改人员</a>
+	</ul>
+	</div>
+</div>
+
+<div class="col-md-10">
 	<c:choose><c:when test="${not empty message }">
 		<table align="center" cellpadding="0" cellspacing="0" style="border:0;">
 			<tr><td>${message }</td></tr>
 		</table>
 	</c:when><c:otherwise>
-    <table width="98%" class="mytable" cellpadding="0" cellspacing="0">
+    <table width="99%" class="table-striped">
         <thead>
             <tr>
-                <th>作业标识</th>
-                <th>作业类</th>
-                <th>作业方法</th>
-                <th>作业参数</th>
-                <th>作业组</th>
-                <th>作业名称</th>
-                <th>作业状态</th>
-                <th>作业调度参数</th>
-                <th>作业描述</th>
-                <th>负责人</th>
-                <th>动作</th>
+                <th style="text-align:center;">作业标识</th>
+                <th style="text-align:center;">作业类</th>
+                <th style="text-align:center;">作业方法</th>
+                <th style="text-align:center;">作业参数</th>
+                <th style="text-align:center;">作业组</th>
+                <th style="text-align:center;">作业名称</th>
+                <th style="text-align:center;">作业状态</th>
+                <th style="text-align:center;">作业调度参数</th>
+                <th style="text-align:center;">作业描述</th>
+                <th style="text-align:center;">负责人</th>
+                <th style="text-align:center;">动作</th>
             </tr>
         </thead>
         <tbody>
@@ -138,18 +113,15 @@ button {
                 <td>${item.description}</td>
                 <td>${item.username}</td>
                 <td>
-                    <a href="${pageContext.request.contextPath}/job/update?id=${item.id}">修改</a>
-                    |
+                    <a href="${pageContext.request.contextPath}/job/update?id=${item.id}"><button class="btn btn-info">修改</button></a>
                     <c:if test="${item.status == '1'}">
-                    <a href="javascript:stop(${item.id});">停止</a>
-                    |
+                    <a href="javascript:stop(${item.id});"><button class="btn btn-warning">停止</button></a>
                     </c:if>
                     <c:if test="${item.status == '0'}">
-                    <a href="javascript:start(${item.id});">启动</a>
-                    |
+                    <a href="javascript:start(${item.id});"><button class="btn btn-success">启动</button></a>
                     </c:if>
                     <c:if test="${item.isHide == '0'}">
-                    <a href="javascript:hide(${item.id});">删除</a>
+                    <a href="javascript:hide(${item.id});"><button class="btn btn-danger">删除</button></a>
                     </c:if>
                 </td>
             </tr>
@@ -158,6 +130,6 @@ button {
     </table>
     <div style="display:none" id="j_end">end</div>
     </c:otherwise></c:choose>
-
+</div>
 </body>
 </html>

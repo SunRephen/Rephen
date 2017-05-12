@@ -61,49 +61,59 @@ td {
 <body style="align:center;text-align:center;">
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="/job/list">作业发布系统</a>
-    </div>
-    <div>
-        <ul class="nav navbar-nav">
-            <li><a href="${pageContext.request.contextPath}/job/list?userId=${user.id}">作业列表</a></li>
-            <li><a href="${pageContext.request.contextPath}/job/addOrEdit?userId=${user.id}">添加/修改作业实例</a></li>
-            <li class="active"><a href="#">修改人员信息</a></li>
-            <li><a href="${pageContext.request.contextPath}/welcome/logout">注销</a></li>
-        </ul>
-    </div>
+	    <div class="navbar-header">
+	        <a class="navbar-brand" href="/job/list?userId=${user.id}">作业发布系统</a>
+	    </div>
+	    <ul class="nav navbar-nav navbar-right">
+	    	<li><a href="/welcome/logout">注销</a></li>
+	    </ul>
     </div>
 </nav>
-	<form action="${pageContext.request.contextPath}/user/save" method="post" class="form-signin">
+
+<div class="col-md-2 sidebar-offcanvas">
+<div class="list-group">
+	<ul class="nav nav-pills nav-stacked">
+	    <a href="/job/list?userId=${user.id}" class="list-group-item">作业列表</a>
+	    <a class="list-group-item" href="${pageContext.request.contextPath}/job/addOrEdit?userId=${user.id}">添加/修改作业</a>
+	    <a class="list-group-item  active" href="#">修改人员信息</a>
+	</ul>
+	</div>
+</div>
+
+<div class="col-md-2 sidebar-offcanvas"></div>
+
+<div class="col-md-6 sidebar-offcanvas">
+	<form class="form-horizontal" action="${pageContext.request.contextPath}/user/save" method="post" class="form-signin">
 		<input type="hidden" name="userId" value="${user.id}"/>
-        <table align="center" cellpadding="0" cellspacing="0" style="border:0;">
-            <tr>
-                <td>
-                    username:
-                </td>
-                <td>
-                    <input class="form-control" <c:if test="${not empty user }"> readonly="true" </c:if> type="text" name="username" value="${user.username}" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    password:
-                </td>
-                <td>
-                    <input class="form-control" type="password" name="password" value="${user.password}" />
-                </td>
-            </tr>
-           <tr>
-                <td>
-                    mail_address:
-                </td>
-                <td>
-                     <input class="form-control" type="text" name="mailAddress" value="${user.mailAddress}"/>
-                </td>
-            </tr>
-        </table>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">提交</button>
+			<div class="form-group">
+    			<label for="username" class="col-sm-2 control-label">username</label>
+    			<div class="col-sm-7">
+    				<input class="form-control" <c:if test="${not empty user }"> readonly="true" </c:if> type="text" name="username" value="${user.username}" />
+    			</div>
+  			</div>
+  			
+  			<div class="form-group">
+    			<label for="password" class="col-sm-2 control-label">password</label>
+    			<div class="col-sm-7">
+    				<input class="form-control" type="password" name="password" value="${user.password}" />
+    			</div>
+  			</div>
+  			
+  			<div class="form-group">
+    			<label for="mail_address" class="col-sm-2 control-label">mailAddress</label>
+    			<div class="col-sm-7">
+    				<input class="form-control" type="text" name="mailAddress" value="${user.mailAddress}"/>
+    			</div>
+  			</div>
+  			
+  			<div class="form-group">
+    			<div class="col-sm-offset-4 col-sm-4">
+      				<button type="submit" class="btn btn-default">提交</button>
+    			</div>
+ 			</div>
 	</form>
+</div>
+<div class="col-md-2 sidebar-offcanvas"></div>
     
 </body>
 </html>

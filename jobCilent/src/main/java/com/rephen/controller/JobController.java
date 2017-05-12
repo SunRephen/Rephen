@@ -97,7 +97,7 @@ public class JobController {
             return;
         }
 
-        result.put("success", "保存成功");
+        result.put("success", true);
         result.put("id", id);
         result.put("message", "保存成功");
         writeJson(response, result);

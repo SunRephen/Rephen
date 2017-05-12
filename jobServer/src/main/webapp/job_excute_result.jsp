@@ -8,23 +8,32 @@
 <body style="height: 90%; margin: 0">
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="/job/list">作业调度监控系统</a>
-    </div>
-    <div>
-        <ul class="nav navbar-nav">
-            <li><a href="${pageContext.request.contextPath}/job/list">作业列表</a></li>
-            <li><a href="${pageContext.request.contextPath}/user/list">人员列表</a></li>
-            <li><a href="${pageContext.request.contextPath}/user/addOrEdit">添加/修改人员</a></li>
-            <li  class="active"><a href="#">作业结果展示</a></li>
-            <li><a href="${pageContext.request.contextPath}/welcome/logout">注销</a></li>
-        </ul>
-    </div>
+	    <div class="navbar-header">
+	        <a class="navbar-brand" href="/job/list">作业调度监控系统</a>
+	    </div>
+	    <ul class="nav navbar-nav navbar-right">
+	    	<li><a href="/welcome/logout">注销</a></li>
+	    </ul>
     </div>
 </nav>
+
+<div class="col-md-2 sidebar-offcanvas">
+<div class="list-group">
+	<ul class="nav nav-pills nav-stacked">
+	    <a href="${pageContext.request.contextPath}/job/list" class="list-group-item">作业列表</a>
+	    <a class="list-group-item" href="${pageContext.request.contextPath}/user/list">人员列表</a>
+        <a class="list-group-item" href="${pageContext.request.contextPath}/user/addOrEdit">添加/修改人员</a>
+        <a class="list-group-item active" href="#">作业结果展示</a>
+        <a class="list-group-item" id="allDetail" href="${pageContext.request.contextPath}/job/showHistoryDetail?id=${jobId }">作业成功历史结果</a>
+	</ul>
+	</div>
+</div>
+
+<div class="col-md-10 sidebar-offcanvas">
 	<input id="excuteCountResult" type="hidden" value="${excuteCountResult }"/>
 	<input id="jobId" type="hidden" value="${jobId }"/>
-	<div id="container" style="height: 90%"></div>
+	<div id="container" style="height: 500%"></div>
+</div>
 	<script type="text/javascript" src="/js/jquery-1.5.2.min.js"></script>
 	<script type="text/javascript" src="/js/echarts.min.js"></script>
 

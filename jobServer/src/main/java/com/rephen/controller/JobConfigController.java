@@ -403,6 +403,7 @@ public class JobConfigController {
                     mv.addObject("xAxis", data[0]);
                     mv.addObject("value", data[1]);
                     mv.addObject("showAll", 1);
+                    mv.addObject("jobId", jobId);
                 }
             }
         }else{

@@ -6,38 +6,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <style>
-table,th,td {
-	margin: 0px;
-	padding: 0px;
-	line-height: 18px;
-	color: #000;
-	font-size: 12px;
-}
-
-.mytable th {
-	background: #BCE774;
-	text-align: center;
-	font-weight: normal;
-	width: 150px;
-	padding: 6px;
-}
-
-.mytable td {
-	background: #ECFBD4;
-	padding: 3px;
-}
-
-.mytable th,.mytable td {
-	border-top: 1px solid #e9e9e9;
-	border-left: 1px solid #e9e9e9;
-	text-align: left;
-}
-
-.mytable {
-	border-bottom: 1px solid #e9e9e9;
-	border-right: 1px solid #e9e9e9;
-}
-
 button {
 	margin: 10px;
 }
@@ -70,34 +38,37 @@ button {
     </title>
 </head>
 <body style="text-align:center;">
+
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="/job/list">作业调度监控系统</a>
-    </div>
-    <div>
-        <ul class="nav navbar-nav">
-            <li><a href="${pageContext.request.contextPath}/job/list">作业列表</a></li>
-            <li class="active"><a href="#">人员列表</a></li>
-            <li><a href="${pageContext.request.contextPath}/user/addOrEdit">添加/修改人员</a></li>
-            <li><a href="${pageContext.request.contextPath}/welcome/logout">注销</a></li>
-        </ul>
-    </div>
+	    <div class="navbar-header">
+	        <a class="navbar-brand" href="/job/list">作业调度监控系统</a>
+	    </div>
+	    <ul class="nav navbar-nav navbar-right">
+	    	<li><a href="/welcome/logout">注销</a></li>
+	    </ul>
     </div>
 </nav>
 
-	<c:choose><c:when test="${not empty message }">
-		<table align="center" cellpadding="0" cellspacing="0" style="border:0;">
-			<tr><td>${message }</td></tr>
-		</table>
-	</c:when><c:otherwise>
-    <table width="50%" class="mytable" cellpadding="0" cellspacing="0">
+<div class="col-md-2 sidebar-offcanvas">
+<div class="list-group">
+	<ul class="nav nav-pills nav-stacked">
+	    <a href="${pageContext.request.contextPath}/job/list" class="list-group-item">作业列表</a>
+	    <a class="list-group-item active" href="#">人员列表</a>
+        <a class="list-group-item" href="${pageContext.request.contextPath}/user/addOrEdit">添加/修改人员</a>
+	</ul>
+	</div>
+</div>
+
+
+<div class="col-md-10 sidebar-offcanvas">
+    <table width="100%" class="table-striped" cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th>id</th>
-                <th>用户名</th>
-                <th>邮箱地址</th>
-                <th>动作</th>
+                <th style="text-align:center;">id</th>
+                <th style="text-align:center;">用户名</th>
+                <th style="text-align:center;">邮箱地址</th>
+                <th style="text-align:center;">动作</th>
             </tr>
         </thead>
         <tbody>
@@ -107,16 +78,16 @@ button {
                 <td>${item.username}</td>
                 <td>${item.mailAddress}</td>
                 <td>
-                	<a href="/user/addOrEdit?userId=${item.id}">修改</a>
-                	<a href="javascript:resetPassword(${item.id});">重置密码</a>
-                    <a href="javascript:deleteUser(${item.id});">删除</a>
+                	<a href="/user/addOrEdit?userId=${item.id}"><button class="btn btn-info">修改</button></a>
+                	<a href="javascript:resetPassword(${item.id});"><button class="btn btn-warning">重置密码</button></a>
+                    <a href="javascript:deleteUser(${item.id});"><button class="btn btn-danger">删除</button></a>
                 </td>
             </tr>
             </c:forEach>
         </tbody>
     </table>
     <div style="display:none" id="j_end">end</div>
-    </c:otherwise></c:choose>
+</div>
 
 </body>
 </html>
